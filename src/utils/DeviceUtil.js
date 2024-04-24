@@ -1,4 +1,6 @@
-import { Dimensions, PixelRatio, Platform } from 'react-native';
+import { Dimensions, PixelRatio, Platform, StatusBar } from 'react-native';
+import StaticSafeAreaInsets from 'react-native-static-safe-area-insets';
+import AppInfoManager from '../AppInfoManager';
 
 export const IS_ANDROID = Platform.OS === 'android';
 
@@ -15,8 +17,60 @@ export const heightWindow =
 export const pixel = (dp) => dp / PixelRatio.get()
 
 export const insets = {
-  top: 0,
-  bottom: 0,
-  left: 0,
-  right: 0,
+  top: StaticSafeAreaInsets.safeAreaInsetsTop,
+  bottom: StaticSafeAreaInsets.safeAreaInsetsBottom,
+  left: StaticSafeAreaInsets.safeAreaInsetsLeft,
+  right: StaticSafeAreaInsets.safeAreaInsetsRight
+}
+
+export function getStatusBarHeight() {
+  return Platform.select({
+    ios: isNewIpModel() ? 44 : 20,
+    android: StatusBar.currentHeight,
+    default: 0,
+  });
+}
+
+export const isNewIpModel = () => {
+  return (
+    listNewIpModel.indexOf(AppInfoManager.getInstance().getAppInfo().model) !==
+    -1
+  );
 };
+
+
+const listNewIpModel = [
+  'iPhone X',
+  'iPhone XS',
+  'iPhone XR',
+  'iPhone XS Max',
+  'iPhone 11',
+  'iPhone 11 Pro',
+  'iPhone 11 Pro Max',
+  'iPhone 12',
+  'iPhone 12 Pro',
+  'iPhone 12 Pro Max',
+  'iPhone 13',
+  'iPhone 13 Pro',
+  'iPhone 13 Pro Max',
+  'iPhone 14',
+  'iPhone 14 Pro',
+  'iPhone 14 Pro Max',
+  'iPhone 15',
+  'iPhone 15 Pro',
+  'iPhone 15 Pro Max',
+];
+
+export const hasHomeIndicator = () => isNewIpModel();
+
+export const isNewAndroidModel = () => {
+  return (
+    IS_ANDROID && AppInfoManager.getInstance().getAppInfo().systemVersion >= 10
+  );
+};
+
+export const STATUS_BAR_HEIGHT = !IS_ANDROID
+  ? hasHomeIndicator()
+    ? 44
+    : 20
+  : StatusBar.currentHeight;

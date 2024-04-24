@@ -1,5 +1,4 @@
 import Immutable from 'immutable';
-import { REQUEST_TYPE, REQUEST_SUBTYPE, NORMAL_TYPE } from '../../actions/ActionTypes';
 
 const initState = Immutable.fromJS({
   quoc: "123"

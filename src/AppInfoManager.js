@@ -1,6 +1,5 @@
 import { getConfigDevice } from './ConfigDevice';
 import { getStateForKeys } from './utils/Util';
-import { myLog } from './Debug';
 
 const appInfo = {
   platform: getConfigDevice().platform,
@@ -66,21 +65,18 @@ export default class AppInfoManager {
   getAccessToken = () => {
     if (!this.getStore()) { return; }
     const accessToken = getStateForKeys(this.getStore().getState(), ['User', 'accessToken']);
-    myLog('getAccessToken', accessToken);
     return accessToken;
   }
 
   getUid = () => {
     if (!this.getStore()) { return; }
     const uid = getStateForKeys(this.getStore().getState(), ['User', 'uid']);
-    myLog('getUid', uid);
     return uid;
   }
 
   getTokenType = () => {
     if (!this.getStore()) { return; }
     const tokenType = getStateForKeys(this.getStore().getState(), ['User', 'tokenType']);
-    myLog('getTokenType', tokenType);
     return tokenType;
   }
 

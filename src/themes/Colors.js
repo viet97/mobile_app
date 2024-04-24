@@ -10,4 +10,5 @@ export const Colors = {
   navy_blue_90: '#E6235EE7',
   navy_blue: '#235EE7',
   black60: 'rgba(0, 0, 0, 0.6)',
+  cylindrical: '#CED4DA',
 };
