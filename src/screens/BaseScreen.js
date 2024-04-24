@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import { Component } from 'react';
 import {
+    BackHandler,
     StyleSheet,
-    BackHandler
-} from 'react-native'
+    View
+} from 'react-native';
+import { Colors } from '../themes/Colors';
 
 export default class BaseScreen extends Component {
     constructor(props) {
@@ -27,7 +29,13 @@ export default class BaseScreen extends Component {
 
     }
     render() {
-        return this.renderContent()
+        return <View
+            style={{
+                flex: 1,
+                backgroundColor: Colors.backgroundScreen
+            }}>
+            {this.renderContent()}
+        </View>
     }
 }
 

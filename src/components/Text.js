@@ -19,23 +19,15 @@ class Text extends PureComponent {
             semiBold,
             extraBold,
             style,
+            children,
             ...otherProps
         } = this.props;
-        let fontFamily = FONT_FAMILY.regular;
-        if (bold) {
-            fontFamily = FONT_FAMILY.bold
-        }
-        if (semiBold) {
-            fontFamily = FONT_FAMILY.semiBold
-        }
-        if (extraBold) {
-            fontFamily = FONT_FAMILY.extraBold
-        }
+
         return (
             <RNText
                 {...otherProps}
-                style={[style, { fontFamily }]}
-            />
+                style={[style]}
+            >{children}</RNText>
         );
     }
 }

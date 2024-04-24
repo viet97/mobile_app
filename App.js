@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { Colors } from './src/themes/Colors';
-import AppNavigation from './src/navigation/AppNavigation'
-import Loading from './src/components/Loading/index';
-import ConfigStore from './src/ConfigStore';
-import { Provider } from 'react-redux';
 import { RootSiblingParent, setSiblingWrapper } from 'react-native-root-siblings';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+import ConfigStore from './src/ConfigStore';
+import Loading from './src/components/Loading/index';
+import AppNavigation from './src/navigation/AppNavigation';
+import { Colors } from './src/themes/Colors';
 
 const { store } = ConfigStore();
 
@@ -22,7 +22,7 @@ export default class App extends Component {
   render() {
     return (
       <RootSiblingParent>
-        <SafeAreaView edges={['right', 'bottom', 'left', 'top']} style={{ flex: 1, backgroundColor: Colors.white }}>
+        <SafeAreaView edges={['right', 'bottom', 'left']} style={{ flex: 1, backgroundColor: Colors.white }}>
           <SafeAreaProvider>
             <Provider store={store}>
               <StatusBar

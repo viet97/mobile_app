@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
     StyleSheet,
     View,
 } from 'react-native'
-import LoadingManager from '../../components/Loading/LoadingManager'
-import NavigationService from '../../navigation/NavigationService'
 import BaseScreen from '../BaseScreen'
 
 export default class HomeScreen extends BaseScreen {
@@ -14,14 +12,19 @@ export default class HomeScreen extends BaseScreen {
     }
 
     _componentDidMount() {
-        // LoadingManager.getInstance().visibleLoading(true)
     }
 
 
     renderContent() {
-        <View>
+        return (
+            <View
+                style={{
+                    flex: 1,
+                }}>
 
-        </View>
+            </View>
+        )
+
     }
 }
 
